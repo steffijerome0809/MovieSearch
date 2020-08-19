@@ -60,4 +60,28 @@ class Search extends React.Component {
       onClick={this.triggerSearchRequest}
     />
   );
+
+  render() {
+    return (
+      <SearchField onSubmit={this.triggerSearchRequest}>
+        <InputGroup
+          large={true}
+          leftIcon='search'
+          onChange={this.getInputValue}
+          placeholder='Type a movie name'
+          round={true}
+          type='search'
+          intent='none'
+          rightElement={this.searchButton}
+          value={this.state.searchQuery}
+        />
+      </SearchField>
+    );
+  }
 }
+
+Search.propTypes = {
+  getSearchResults: PropTypes.func.isRequired,
+};
+
+export default Search;

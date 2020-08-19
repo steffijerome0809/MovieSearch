@@ -14,3 +14,15 @@ const SearchField = styled.form`
     width: 320px;
   }
 `;
+
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+
+    //set state
+
+    this.state = {
+      searchQuery: '',
+    };
+  }
+}

@@ -1,5 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { InputGroup, Button } from '@blueprintjs/core';
+import styled from 'styled-components';
 
+const SearchField = styled.form`
+  width: 450px;
 
+  @media (max-width: 414px) {
+    width: 350px;
+  }
 
+  @media (max-width: 375px) {
+    width: 320px;
+  }
+`;

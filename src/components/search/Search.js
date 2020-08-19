@@ -48,4 +48,16 @@ class Search extends React.Component {
     e.preventDefault();
     this.props.getSearchResults(this.state.searchQuery, 1);
   };
+
+  // this button when clicked triggers a req to movies api
+
+  searchButton = (
+    <Button
+      intent={'SUCCESS'}
+      className='inputSearchField'
+      rightIcon='arrow-right'
+      text='Search'
+      onClick={this.triggerSearchRequest}
+    />
+  );
 }

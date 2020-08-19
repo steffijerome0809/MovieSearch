@@ -25,4 +25,27 @@ class Search extends React.Component {
       searchQuery: '',
     };
   }
+
+  // gets value from movie search input
+
+  getInputValue = (event) => {
+    this.setState(
+      {
+        searchQuery: event.target.value,
+      },
+      () => {
+        /**
+         * When the input field is cleared, show the default state
+         */
+        if (this.state.searchQuery === '') {
+          this.props.getSearchResults(this.state.searchQuery, 1);
+        }
+      }
+    );
+  };
+
+  triggerSearchRequest = (e) => {
+    e.preventDefault();
+    this.props.getSearchResults(this.state.searchQuery, 1);
+  };
 }

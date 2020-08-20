@@ -14,6 +14,22 @@ const { getLanguageName } = utils;
  * Creates MovieTitle component with
  * following styles using styled-components.
  */
+
+export const MovieInstanceWrapper = styled(Card)`
+  width: 700px;
+  margin: 20px;
+  border-radius: 10px;
+  color: rgb(66, 82, 110);
+  padding: 12px 24px 24px 24px;
+
+  @media (max-width: 414px) {
+    width: 345px;
+  }
+
+  @media (max-width: 375px) {
+    width: 300px;
+  }
+`;
 export const MovieTitle = styled.div`
   font-weight: 600;
   font-size: 28px;
@@ -48,3 +64,55 @@ export const AdditionalInfoItem = styled.div`
     }
   }
 `;
+
+const MovieInstance = ({
+  title,
+  overview = { noDesc },
+  language,
+  releaseDate,
+  posterPath,
+}) => {
+  return (
+    <MovieInstanceWrapper elevation={0} interactive={true}>
+      <MovieTitle>{title}</MovieTitle>
+
+      <AdditionalInfo>
+        <AdditionalInfoItem>
+          <Icon className='infoItemIcon' icon='translate' />
+          {getLanguageName(language, languages)}
+        </AdditionalInfoItem>
+        <AdditionalInfoItem>
+          <Icon className='infoItemIcon' icon='calendar' />
+          {Number.isNaN(moment(releaseDate, 'YYYY-MM-DD').year())
+            ? noDate
+            : moment(releaseDate, 'YYYY-MM-DD').year()}
+        </AdditionalInfoItem>
+        <AdditionalInfoItem>
+          {posterPath ? (
+            <a
+              href={`${POSTER_BASE_PATH}${posterPath}`}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              View Poster
+            </a>
+          ) : (
+            ''
+          )}
+        </AdditionalInfoItem>
+      </AdditionalInfo>
+
+      <MovieOverview>{overview}</MovieOverview>
+    </MovieInstanceWrapper>
+  );
+};
+
+MovieInstance.propTypes = {
+  title: PropTypes.string,
+  overview: PropTypes.string,
+  language: PropTypes.string,
+  releaseDate: PropTypes.string,
+  posterPath: PropTypes.string,
+};
+
+export default MovieInstance;

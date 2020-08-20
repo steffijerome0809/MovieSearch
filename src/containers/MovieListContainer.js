@@ -56,3 +56,38 @@ const initialState = (
     desc={initialStateDesc}
   />
 );
+
+// defining one component and calling another components in the same file
+
+const MovieListContainer = ({ error, page, searchResults, totalResults }) => {
+  return (
+    <>
+      {/** Initial state: When no search operation is done after page load. */}
+      {!page && !totalResults && !error ? initialState : ''}
+
+      {/** When a search query yields no results. */}
+      {page === 1 && !totalResults && !error ? noResultsFound : ''}
+
+      {/** In case a network error occurs */}
+      {error ? errorOccurred : ''}
+
+      {/** When a search query gets matching results. */}
+      {searchResults.length > 0 && totalResults > 0 && !error ? (
+        <MovieListWrapper>
+          <MovieList movieList={searchResults} />
+        </MovieListWrapper>
+      ) : (
+        ''
+      )}
+    </>
+  );
+};
+
+MovieListContainer.propTypes = {
+  error: PropTypes.bool,
+  page: PropTypes.number,
+  searchResults: PropTypes.array,
+  totalResults: PropTypes.number,
+};
+
+export default MovieListContainer;

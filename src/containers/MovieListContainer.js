@@ -23,3 +23,36 @@ const MovieListWrapper = styled.div`
     text-align: center;
   }
 `;
+
+/** Placeholder to show when no results found */
+const noResultsFound = (
+  <UIState
+    icon='error'
+    iconSize='50'
+    intent='warning'
+    title={noResultsFoundLabel}
+    desc={noResultsFoundDesc}
+  />
+);
+
+/** Placeholder to show when a network error occurs */
+const errorOccurred = (
+  <UIState
+    icon='error'
+    iconSize='50'
+    intent='danger'
+    title={errorOccurredLabel}
+    desc={errorOccurredDesc}
+  />
+);
+
+/** Placeholder to show after the page loads. */
+const initialState = (
+  <UIState
+    icon='film'
+    iconSize='80'
+    customcolor='#8A9BA8'
+    title={initialStateLabel}
+    desc={initialStateDesc}
+  />
+);

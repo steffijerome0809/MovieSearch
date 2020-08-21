@@ -8,6 +8,7 @@ import { POSTER_BASE_PATH } from '../../config/constants';
 import { noDesc, noDate } from '../../config/appConfig';
 import utils from '../../utils/utils';
 
+// install npm i moment
 const { getLanguageName } = utils;
 
 /**

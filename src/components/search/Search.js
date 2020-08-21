@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, Button } from '@blueprintjs/core';
 import styled from 'styled-components';
+// install npm i styled components
 
+/**
+ * Creates SearchField from "form" element
+ * using styled-components
+ */
 const SearchField = styled.form`
   width: 450px;
 
@@ -19,19 +24,20 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    //set state
-
+    /** Initial state */
     this.state = {
       searchQuery: '',
     };
   }
 
-  // gets value from movie search input
-
-  getInputValue = (event) => {
+  /**
+   * Gets value from movie search input
+   * field through onChange event
+   */
+  getInputValue = (e) => {
     this.setState(
       {
-        searchQuery: event.target.value,
+        searchQuery: e.target.value,
       },
       () => {
         /**
@@ -49,8 +55,10 @@ class Search extends React.Component {
     this.props.getSearchResults(this.state.searchQuery, 1);
   };
 
-  // this button when clicked triggers a req to movies api
-
+  /**
+   * This button when clicked, triggers
+   * a request to movies API
+   */
   searchButton = (
     <Button
       intent={'SUCCESS'}
@@ -68,7 +76,7 @@ class Search extends React.Component {
           large={true}
           leftIcon='search'
           onChange={this.getInputValue}
-          placeholder='Type a movie name'
+          placeholder='Type movie name here'
           round={true}
           type='search'
           intent='none'

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import MovieInstance from '../movieInstance/MovieInstance';
+import MovieInstance from '../movieinstance/MovieInstance';
 
 const MovieList = ({ movieList }) => {
   return (

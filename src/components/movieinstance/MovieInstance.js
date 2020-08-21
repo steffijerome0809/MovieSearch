@@ -1,21 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Card, Icon } from '@blueprintjs/core';
-import styled from 'styled-components';
-import moment from 'moment';
-import languages from '../../config/languages';
-import { POSTER_BASE_PATH } from '../../config/constants';
-import { noDesc, noDate } from '../../config/appConfig';
-import utils from '../../utils/utils';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card, Icon } from "@blueprintjs/core";
+import styled from "styled-components";
+import moment from "moment";
+import languages from "../../config/languages";
+import { POSTER_BASE_PATH } from "../../config/constants";
+import { noDesc, noDate } from "../../config/appConfig";
+import utils from "../../utils/utils";
 
-// install npm i moment
 const { getLanguageName } = utils;
 
 /**
- * Creates MovieTitle component with
- * following styles using styled-components.
+ * Extends styles of "Card" component of
+ * Blueprintjs using styled-components.
  */
-
 export const MovieInstanceWrapper = styled(Card)`
   width: 700px;
   margin: 20px;
@@ -31,6 +29,11 @@ export const MovieInstanceWrapper = styled(Card)`
     width: 300px;
   }
 `;
+
+/**
+ * Creates MovieTitle component with
+ * following styles using styled-components.
+ */
 export const MovieTitle = styled.div`
   font-weight: 600;
   font-size: 28px;
@@ -71,7 +74,7 @@ const MovieInstance = ({
   overview = { noDesc },
   language,
   releaseDate,
-  posterPath,
+  posterPath
 }) => {
   return (
     <MovieInstanceWrapper elevation={0} interactive={true}>
@@ -79,26 +82,26 @@ const MovieInstance = ({
 
       <AdditionalInfo>
         <AdditionalInfoItem>
-          <Icon className='infoItemIcon' icon='translate' />
+          <Icon className="infoItemIcon" icon="translate" />
           {getLanguageName(language, languages)}
         </AdditionalInfoItem>
         <AdditionalInfoItem>
-          <Icon className='infoItemIcon' icon='calendar' />
-          {Number.isNaN(moment(releaseDate, 'YYYY-MM-DD').year())
+          <Icon className="infoItemIcon" icon="calendar" />
+          {Number.isNaN(moment(releaseDate, "YYYY-MM-DD").year())
             ? noDate
-            : moment(releaseDate, 'YYYY-MM-DD').year()}
+            : moment(releaseDate, "YYYY-MM-DD").year()}
         </AdditionalInfoItem>
         <AdditionalInfoItem>
           {posterPath ? (
             <a
               href={`${POSTER_BASE_PATH}${posterPath}`}
-              target='_blank'
-              rel='noopener noreferrer'
+              target="_blank"
+              rel="noopener noreferrer"
             >
               View Poster
             </a>
           ) : (
-            ''
+            ""
           )}
         </AdditionalInfoItem>
       </AdditionalInfo>
@@ -113,7 +116,7 @@ MovieInstance.propTypes = {
   overview: PropTypes.string,
   language: PropTypes.string,
   releaseDate: PropTypes.string,
-  posterPath: PropTypes.string,
+  posterPath: PropTypes.string
 };
 
 export default MovieInstance;

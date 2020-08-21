@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Icon } from '@blueprintjs/core';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { Icon } from "@blueprintjs/core";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,16 +15,16 @@ const Wrapper = styled.div`
  * prop to Blueprint's Icon element.
  */
 const StyledIcon = styled(Icon)`
-  color: ${(props) => (props.customcolor ? props.customcolor : '#000')};
+  color: ${props => (props.customcolor ? props.customcolor : "#000")};
 `;
 
 const UIState = ({
   icon,
   iconSize,
-  intent = 'none',
-  customcolor = '#000',
+  intent = "none",
+  customcolor = "#000",
   title,
-  desc,
+  desc
 }) => {
   return (
     <Wrapper>
@@ -47,7 +47,7 @@ UIState.propTypes = {
   intent: PropTypes.string,
   customcolor: PropTypes.string,
   title: PropTypes.string,
-  desc: PropTypes.string,
+  desc: PropTypes.string
 };
 
 export default UIState;

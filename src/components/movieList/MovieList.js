@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import MovieInstance from '../movieinstance/MovieInstance';
+import MovieInstance from "../movieInstance/MovieInstance";
 
 const MovieList = ({ movieList }) => {
   return (
@@ -20,13 +20,13 @@ const MovieList = ({ movieList }) => {
               />
             );
           })
-        : ''}
+        : ""}
     </>
   );
 };
 
 MovieList.propTypes = {
-  movieList: PropTypes.array,
+  movieList: PropTypes.array
 };
 
 export default MovieList;

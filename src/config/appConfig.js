@@ -1,4 +1,3 @@
-//setting up some default messages
 export const homepageTitle = "Search your favourite movies!";
 export const noDesc = "No description available";
 export const noDate = "Year not available";

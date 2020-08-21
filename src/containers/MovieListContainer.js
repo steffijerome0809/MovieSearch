@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import UIState from '../components/shared/UIState';
-import MovieList from '../components/movieList/MovieList';
+import UIState from "../components/shared/UIState";
+import MovieList from "../components/movieList/MovieList";
 import {
   noResultsFoundLabel,
   noResultsFoundDesc,
   initialStateLabel,
   initialStateDesc,
   errorOccurredLabel,
-  errorOccurredDesc,
-} from '../config/appConfig';
+  errorOccurredDesc
+} from "../config/appConfig";
 
 const MovieListWrapper = styled.div`
   display: flex;
@@ -27,9 +27,9 @@ const MovieListWrapper = styled.div`
 /** Placeholder to show when no results found */
 const noResultsFound = (
   <UIState
-    icon='error'
-    iconSize='50'
-    intent='warning'
+    icon="error"
+    iconSize="50"
+    intent="warning"
     title={noResultsFoundLabel}
     desc={noResultsFoundDesc}
   />
@@ -38,9 +38,9 @@ const noResultsFound = (
 /** Placeholder to show when a network error occurs */
 const errorOccurred = (
   <UIState
-    icon='error'
-    iconSize='50'
-    intent='danger'
+    icon="error"
+    iconSize="50"
+    intent="danger"
     title={errorOccurredLabel}
     desc={errorOccurredDesc}
   />
@@ -49,27 +49,25 @@ const errorOccurred = (
 /** Placeholder to show after the page loads. */
 const initialState = (
   <UIState
-    icon='film'
-    iconSize='80'
-    customcolor='#8A9BA8'
+    icon="film"
+    iconSize="80"
+    customcolor="#8A9BA8"
     title={initialStateLabel}
     desc={initialStateDesc}
   />
 );
 
-// defining one component and calling another components in the same file
-
 const MovieListContainer = ({ error, page, searchResults, totalResults }) => {
   return (
     <>
       {/** Initial state: When no search operation is done after page load. */}
-      {!page && !totalResults && !error ? initialState : ''}
+      {!page && !totalResults && !error ? initialState : ""}
 
       {/** When a search query yields no results. */}
-      {page === 1 && !totalResults && !error ? noResultsFound : ''}
+      {page === 1 && !totalResults && !error ? noResultsFound : ""}
 
       {/** In case a network error occurs */}
-      {error ? errorOccurred : ''}
+      {error ? errorOccurred : ""}
 
       {/** When a search query gets matching results. */}
       {searchResults.length > 0 && totalResults > 0 && !error ? (
@@ -77,7 +75,7 @@ const MovieListContainer = ({ error, page, searchResults, totalResults }) => {
           <MovieList movieList={searchResults} />
         </MovieListWrapper>
       ) : (
-        ''
+        ""
       )}
     </>
   );
@@ -87,7 +85,7 @@ MovieListContainer.propTypes = {
   error: PropTypes.bool,
   page: PropTypes.number,
   searchResults: PropTypes.array,
-  totalResults: PropTypes.number,
+  totalResults: PropTypes.number
 };
 
 export default MovieListContainer;

@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { InputGroup, Button } from '@blueprintjs/core';
-import styled from 'styled-components';
-// install npm i styled components
+import React from "react";
+import PropTypes from "prop-types";
+import { InputGroup, Button } from "@blueprintjs/core";
+import styled from "styled-components";
 
 /**
  * Creates SearchField from "form" element
@@ -26,7 +25,7 @@ class Search extends React.Component {
 
     /** Initial state */
     this.state = {
-      searchQuery: '',
+      searchQuery: ""
     };
   }
 
@@ -34,23 +33,23 @@ class Search extends React.Component {
    * Gets value from movie search input
    * field through onChange event
    */
-  getInputValue = (e) => {
+  getInputValue = e => {
     this.setState(
       {
-        searchQuery: e.target.value,
+        searchQuery: e.target.value
       },
       () => {
         /**
          * When the input field is cleared, show the default state
          */
-        if (this.state.searchQuery === '') {
+        if (this.state.searchQuery === "") {
           this.props.getSearchResults(this.state.searchQuery, 1);
         }
       }
     );
   };
 
-  triggerSearchRequest = (e) => {
+  triggerSearchRequest = e => {
     e.preventDefault();
     this.props.getSearchResults(this.state.searchQuery, 1);
   };
@@ -61,10 +60,10 @@ class Search extends React.Component {
    */
   searchButton = (
     <Button
-      intent={'SUCCESS'}
-      className='inputSearchField'
-      rightIcon='arrow-right'
-      text='Search'
+      intent={"SUCCESS"}
+      className="inputSearchField"
+      rightIcon="arrow-right"
+      text="Search"
       onClick={this.triggerSearchRequest}
     />
   );
@@ -74,12 +73,12 @@ class Search extends React.Component {
       <SearchField onSubmit={this.triggerSearchRequest}>
         <InputGroup
           large={true}
-          leftIcon='search'
+          leftIcon="search"
           onChange={this.getInputValue}
-          placeholder='Type movie name here'
+          placeholder="Type movie name here"
           round={true}
-          type='search'
-          intent='none'
+          type="search"
+          intent="none"
           rightElement={this.searchButton}
           value={this.state.searchQuery}
         />
@@ -89,7 +88,7 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  getSearchResults: PropTypes.func.isRequired,
+  getSearchResults: PropTypes.func.isRequired
 };
 
 export default Search;

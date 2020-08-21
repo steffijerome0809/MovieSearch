@@ -9,10 +9,10 @@ const utils = {
    */
   getLanguageName: (languageCode, languageList) => {
     const languageArr = languageList.filter(
-      (language) => language.code === languageCode
+      language => language.code === languageCode
     );
     return languageArr[0] ? languageArr[0].name : languageCode;
-  },
+  }
 };
 
 export default utils;

@@ -1,12 +1,12 @@
-import React from "react";
-import { Spinner } from "@blueprintjs/core";
-import styled from "styled-components";
+import React from 'react';
+import { Spinner } from '@blueprintjs/core';
+import styled from 'styled-components';
 
-import Search from "../components/search/Search";
-import MovieListContainer from "./MovieListContainer";
-import getData from "../api";
-import { API_PATH } from "../config/constants";
-import { homepageTitle } from "../config/appConfig";
+import Search from '../components/search/Search';
+import MovieListContainer from './MovieListContainer';
+import getData from '../api';
+import { API_PATH } from '../config/constants';
+import { homepageTitle } from '../config/appConfig';
 
 export const SearchSection = styled.div`
   width: 100%;
@@ -30,3 +30,27 @@ export const SmallHeading = styled.h1`
 const SpinnerWrapper = styled.div`
   margin: 50px;
 `;
+
+class SearchContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.initialState;
+  }
+}
+
+
+class SearchContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.initialState;
+  }
+
+  initialState = {
+    page: 0,
+    totalResults: 0,
+    totalPages: 0,
+    loading: false,
+    searchQuery: "",
+    error: false,
+    searchResults: []
+  };

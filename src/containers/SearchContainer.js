@@ -1,12 +1,12 @@
-import React from "react";
-import { Spinner } from "@blueprintjs/core";
-import styled from "styled-components";
+import React from 'react';
+import { Spinner } from '@blueprintjs/core';
+import styled from 'styled-components';
 
-import Search from "../components/search/Search";
-import MovieListContainer from "./MovieListContainer";
-import getData from "../api";
-import { API_PATH } from "../config/constants";
-import { homepageTitle } from "../config/appConfig";
+import Search from '../components/search/Search';
+import MovieListContainer from './MovieListContainer';
+import getData from '../api';
+import { API_PATH } from '../config/constants';
+import { homepageTitle } from '../config/appConfig';
 
 export const SearchSection = styled.div`
   width: 100%;
@@ -42,9 +42,9 @@ class SearchContainer extends React.Component {
     totalResults: 0,
     totalPages: 0,
     loading: false,
-    searchQuery: "",
+    searchQuery: '',
     error: false,
-    searchResults: []
+    searchResults: [],
   };
 
   /**
@@ -52,14 +52,14 @@ class SearchContainer extends React.Component {
    *  scrolls to the end of the page.
    */
   querySearchResult = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       /** Increment this.state.page until it becomes
        * greater than this.state.totalPages
        */
       page:
         prevState.totalPages >= prevState.page
           ? prevState.page + 1
-          : prevState.page
+          : prevState.page,
     }));
 
     /**
@@ -111,11 +111,11 @@ class SearchContainer extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleOnScroll);
+    window.addEventListener('scroll', this.handleOnScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleOnScroll);
+    window.removeEventListener('scroll', this.handleOnScroll);
   }
 
   /**
@@ -124,7 +124,7 @@ class SearchContainer extends React.Component {
    * Calls movie API
    */
   getSearchResults = (searchQuery, page) => {
-    if (searchQuery === "" && page === 1) {
+    if (searchQuery === '' && page === 1) {
       this.setState(this.initialState);
       return;
     }
@@ -136,11 +136,11 @@ class SearchContainer extends React.Component {
     if (page === 1) {
       this.setState({
         ...this.initialState,
-        loading: true
+        loading: true,
       });
     } else {
       this.setState({
-        loading: true
+        loading: true,
       });
     }
 
@@ -148,7 +148,7 @@ class SearchContainer extends React.Component {
     const requestUrl = `${API_PATH}${searchQuery}&page=${page}`;
 
     /** Sends request using GET method and expects promise in response */
-    getData(requestUrl).then(response => {
+    getData(requestUrl).then((response) => {
       if (response.statusCode === 200) {
         /**
          * Disabling eslint camelcase rule because property names returned by
@@ -157,13 +157,13 @@ class SearchContainer extends React.Component {
 
         /* eslint-disable camelcase */
         const { total_pages, total_results, results } = response.data;
-        this.setState(prevState => ({
+        this.setState((prevState) => ({
           searchQuery,
           page,
           totalPages: total_pages,
           totalResults: total_results,
           searchResults: [...prevState.searchResults, ...results],
-          loading: false
+          loading: false,
         }));
       } else {
         this.setState({ loading: false, error: true });
@@ -210,7 +210,7 @@ class SearchContainer extends React.Component {
 
         {/** Loader/Spinner shows when user hits the bottom of 
           the page and request for more data is triggered */}
-        {page && totalResults && loading ? this.showLoader : ""}
+        {page && totalResults && loading ? this.showLoader : ''}
       </>
     );
   }
